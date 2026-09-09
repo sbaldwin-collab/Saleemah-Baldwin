@@ -1,6 +1,6 @@
 import { Download, FileText } from 'lucide-react';
 import { MEDIA_ASSETS_LIST } from '../data/mediaKitData';
-import { downloadExecutiveBioDocument, downloadXnorbLogoSvg } from '../utils/downloadHelpers';
+import { downloadExecutiveBioDocument, downloadImageFromUrl, downloadXnorbLogoSvg } from '../utils/downloadHelpers';
 
 interface MediaAssetsSectionProps {
   onShowToast: (msg: string) => void;
@@ -8,6 +8,14 @@ interface MediaAssetsSectionProps {
 
 export function MediaAssetsSection({ onShowToast }: MediaAssetsSectionProps) {
   const handleAssetDownload = (assetId: string) => {
+    const asset = MEDIA_ASSETS_LIST.find((item) => item.id === assetId);
+
+    if (asset?.downloadUrl) {
+      downloadImageFromUrl(asset.downloadUrl, asset.downloadUrl.split('/').pop() ?? 'saleemah-baldwin-headshot.png');
+      onShowToast(`Downloading ${asset.title}...`);
+      return;
+    }
+
     if (assetId === 'asset-logo-dark') {
       downloadXnorbLogoSvg('dark');
       onShowToast('Downloading XNORB Technology Brand Vector Logo...');
@@ -64,7 +72,13 @@ export function MediaAssetsSection({ onShowToast }: MediaAssetsSectionProps) {
           >
             {/* Visual Preview / Thumbnail */}
             <div className="h-44 bg-gradient-to-b from-slate-900 to-slate-950 flex items-center justify-center border-b border-slate-800/80 p-6 relative">
-              {asset.isSvg ? (
+              {asset.previewUrl ? (
+                <img
+                  src={asset.previewUrl}
+                  alt={asset.title}
+                  className="absolute inset-0 h-full w-full object-cover object-top"
+                />
+              ) : asset.isSvg ? (
                 <div className="w-full flex flex-col items-center justify-center text-center">
                   <div className="w-16 h-16 rounded-2xl border border-sky-400/40 bg-sky-500/10 flex items-center justify-center text-sky-400 font-black text-2xl mb-2 shadow-inner">
                     XN
