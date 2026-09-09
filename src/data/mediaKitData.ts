@@ -96,9 +96,9 @@ export const OFFICIAL_PRESS_RELEASE: PressReleaseData = {
 export const APPROVED_QUOTES: ApprovedQuote[] = [
   {
     id: 'quote-1',
-    quote: 'The future of enterprise technology isn\'t more AI—it\'s better integration. Connected solutions matter more than technology alone.',
+    quote: 'The goal should not be to replace human expertise, but to strengthen it.',
     context: 'Influential Women Magazine Feature (2026)',
-    topic: 'Enterprise Architecture & AI'
+    topic: 'Responsible AI & Human Expertise'
   },
   {
     id: 'quote-2',
