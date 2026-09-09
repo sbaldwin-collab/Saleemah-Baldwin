@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import { Download, FileText, Palette, Copy, Check, ExternalLink, Sparkles, FolderArchive } from 'lucide-react';
-import { MEDIA_ASSETS_LIST, BRAND_COLORS } from '../data/mediaKitData';
+import { Download, FileText } from 'lucide-react';
+import { MEDIA_ASSETS_LIST } from '../data/mediaKitData';
 import { downloadExecutiveBioDocument, downloadXnorbLogoSvg } from '../utils/downloadHelpers';
 
 interface MediaAssetsSectionProps {
@@ -8,15 +7,6 @@ interface MediaAssetsSectionProps {
 }
 
 export function MediaAssetsSection({ onShowToast }: MediaAssetsSectionProps) {
-  const [copiedColorHex, setCopiedColorHex] = useState<string | null>(null);
-
-  const handleCopyColor = (hex: string) => {
-    navigator.clipboard.writeText(hex);
-    setCopiedColorHex(hex);
-    onShowToast(`Copied color code ${hex}!`);
-    setTimeout(() => setCopiedColorHex(null), 2000);
-  };
-
   const handleAssetDownload = (assetId: string) => {
     if (assetId === 'asset-logo-dark') {
       downloadXnorbLogoSvg('dark');
@@ -127,45 +117,6 @@ export function MediaAssetsSection({ onShowToast }: MediaAssetsSectionProps) {
         ))}
       </div>
 
-      {/* Brand Kit & Color Palette Section */}
-      <div id="brand" className="pt-4 border-t border-slate-800 space-y-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Palette className="w-4 h-4 text-sky-400" />
-            <h3 className="text-base font-bold text-slate-100">
-              Corporate Brand Colors &amp; Visual Tokens
-            </h3>
-          </div>
-          <span className="text-xs text-slate-400">Click any swatch to copy HEX code</span>
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-          {BRAND_COLORS.map((color) => {
-            const isCopied = copiedColorHex === color.hex;
-            return (
-              <button
-                key={color.name}
-                onClick={() => handleCopyColor(color.hex)}
-                className="group p-3 bg-slate-950/70 border border-slate-800 hover:border-slate-700 rounded-xl text-left transition-all cursor-pointer flex flex-col justify-between"
-              >
-                <div
-                  className="w-full h-8 rounded-lg mb-2 border border-slate-700/60 shadow-inner flex items-center justify-end p-1"
-                  style={{ backgroundColor: color.hex }}
-                >
-                  {isCopied && <Check className="w-4 h-4 text-slate-950 stroke-[3]" />}
-                </div>
-                <div>
-                  <div className="text-xs font-bold text-slate-200 truncate">{color.name}</div>
-                  <div className="text-[11px] font-mono text-sky-400 group-hover:text-sky-300 flex items-center justify-between mt-0.5">
-                    <span>{color.hex}</span>
-                    <Copy className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                </div>
-              </button>
-            );
-          })}
-        </div>
-      </div>
     </section>
   );
 }
