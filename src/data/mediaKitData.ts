@@ -7,7 +7,7 @@ export const EXECUTIVE_INFO = {
   location: 'San Francisco, CA & Global',
   badge: 'FEATURED IN INFLUENTIAL WOMEN MAGAZINE',
   pressEmail: 'press@xnorbtechnology.com',
-  directEmail: 'sbaldwin@alleyoopme.com',
+  directEmail: 'sbaldwin@xnorbtechnology.com',
   website: 'https://xnorbtechnology.com',
   heroQuote: 'The future of enterprise technology isn\'t more AI—it\'s better integration. Connected solutions matter more than technology alone.',
   executiveProfile: `Saleemah Baldwin is a visionary technology executive and the Co-Founder & CEO of XNORB Technology Inc. Recognized for her transformational approach to enterprise architecture, Baldwin advocates for seamless integration, long-term ROI, and human-centered innovation over short-term technology trends.`,
@@ -124,6 +124,26 @@ export const BRAND_COLORS = [
 ];
 
 export const MEDIA_ASSETS_LIST: MediaAsset[] = [
+  {
+    id: 'asset-headshot-navy',
+    title: 'Saleemah Baldwin Executive Headshot — Navy',
+    description: 'Official high-resolution executive portrait for editorial, conference, and media use.',
+    category: 'headshot',
+    fileType: 'PNG Headshot',
+    fileSize: '513 KB',
+    previewUrl: '/Saleemah-Baldwin/assets/headshots/saleemah-baldwin-executive-headshot-navy.png',
+    downloadUrl: '/Saleemah-Baldwin/assets/headshots/saleemah-baldwin-executive-headshot-navy.png'
+  },
+  {
+    id: 'asset-headshot-black',
+    title: 'Saleemah Baldwin Executive Headshot — Black',
+    description: 'Official high-resolution executive portrait with a neutral dark background for press use.',
+    category: 'headshot',
+    fileType: 'PNG Headshot',
+    fileSize: '327 KB',
+    previewUrl: '/Saleemah-Baldwin/assets/headshots/saleemah-baldwin-executive-headshot-black.png',
+    downloadUrl: '/Saleemah-Baldwin/assets/headshots/saleemah-baldwin-executive-headshot-black.png'
+  },
   {
     id: 'asset-logo-dark',
     title: 'XNORB Technology Vector Logo (Dark & Light)',
