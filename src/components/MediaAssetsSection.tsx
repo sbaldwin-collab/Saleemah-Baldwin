@@ -71,12 +71,14 @@ export function MediaAssetsSection({ onShowToast }: MediaAssetsSectionProps) {
             className="flex flex-col justify-between bg-slate-950/80 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition-all group"
           >
             {/* Visual Preview / Thumbnail */}
-            <div className="h-44 bg-gradient-to-b from-slate-900 to-slate-950 flex items-center justify-center border-b border-slate-800/80 p-6 relative">
+            <div
+              className={`${asset.previewUrl ? 'aspect-[6/5] p-3' : 'h-44 p-6'} bg-gradient-to-b from-slate-900 to-slate-950 flex items-center justify-center border-b border-slate-800/80 relative`}
+            >
               {asset.previewUrl ? (
                 <img
                   src={asset.previewUrl}
                   alt={asset.title}
-                  className="absolute inset-0 h-full w-full object-cover object-top"
+                  className="h-full w-full object-contain object-center"
                 />
               ) : asset.isSvg ? (
                 <div className="w-full flex flex-col items-center justify-center text-center">
